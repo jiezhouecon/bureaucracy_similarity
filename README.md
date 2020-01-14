@@ -62,3 +62,5 @@ sim_calculator.doc2vec((9, 8))
 ```
 This will return the Doc2Vec similarity score for paper 9 and paper 8.
 
+# 4. LSI
+To be further updated.
