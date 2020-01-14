@@ -1,5 +1,9 @@
 # bureaucracy_similarity
-The code file `similarity.py` contrains functions for calculating several similarity measures.
+The code file `similarity.py` contrains functions for calculating several similarity measures. You may download this in your working directory and import it in the follwoing way:
+```
+from similarity import calculator
+```
+
 # 1. Initialize the similarity calculator
 The code is written as a class which uses a dataframe as its object. The dataframe will be a table in which each observation is a paper. You can initialize the similarity calculator for the whole dataframe using the following code:
 ```
@@ -27,13 +31,13 @@ This will return the BERT similarity score for paper 9 and paper 8.
 
 You may do a simple test before running your own code:
 ```
-from similarity import similarity
+from similarity import calculator
 df = pd.read_csv('南开大学.csv')
 df = df[df['Affiliations'].str.contains("经济")].reset_index(drop=True)
 df = df.head(20)
 
 # Initialize the similarity calculator
-sim_calculator = similarity(df)
+sim_calculator = calculator(df)
 # Prepare the corresponding model for the measure
 sim_calculator.prep_bert("model/chinese_L-12_H-768_A-12", wait_time = 60)
 # Calculate similarity
