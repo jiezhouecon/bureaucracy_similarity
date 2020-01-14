@@ -19,13 +19,12 @@ from bert_serving.client import BertClient
 from gensim.models.doc2vec import Doc2Vec
 from sklearn.metrics.pairwise import cosine_similarity
 
-local_ip = socket.gethostbyname(socket.gethostname())
 
-
-class similarity(object):
+class calculator(object):
     ''' Calculate similarity score
         input: should be a tupe of index
     '''
+    local_ip = socket.gethostbyname(socket.gethostname())
 
     # Define stopwords and stop_flag:
     with open('Chinese_stopwords.txt', encoding='utf8') as f:
@@ -57,16 +56,16 @@ class similarity(object):
             result.append(line)
         return result
 
-    def prep_bert(self):
+    def prep_bert(self, model_dir,wait_time):
         """Load BERT model"""
-        subprocess.check_output(["pip", "install", "-U", "bert-serving-server", "bert-serving-client"])
+        subprocess.call(["pip", "install", "-U", "bert-serving-server", "bert-serving-client"])
+        subprocess.call(["bert-serving-terminate", "-ip", self.local_ip, "-port", "8019"])
         bert_start = subprocess.Popen(["bert-serving-start",
-                                       "-model_dir", "model/chinese_L-12_H-768_A-12",
+                                       "-model_dir", model_dir,
                                        "-num_worker=1",
                                        "-port", "8019"],
                                       stdout=subprocess.PIPE)
-        time.sleep(30)
-        # "bert-serving-terminate -ip 10.189.90.86 -port 8019"
+        time.sleep(wait_time)
         print("====> BERT is loaded.")
 
     def bert_cos(self, indices):
@@ -74,10 +73,10 @@ class similarity(object):
         print("====> Start to calculate BERT similarity.")
         left_term = list(self.abstracts.values())[indices[0]]
         right_term = list(self.abstracts.values())[indices[1]]
-        with BertClient(ip=local_ip, port=8019, check_length=False) as bc:
+        with BertClient(ip=self.local_ip, port=8019, check_length=False) as bc:
             a = bc.encode([left_term])
             b = bc.encode([right_term])
-            cos_sim = cosine_similarity(a, b)
+            cos_sim = cosine_similarity(a, b)[0, 0]
         return cos_sim
 
     def prep_doc2vec(self):
@@ -109,6 +108,6 @@ df = df.head(20)
 # Initialize the similarity calculator
 sim_calculator = similarity(df)
 # Prepare the corresponding model for the measure
-sim_calculator.prep_bert()
+sim_calculator.prep_bert("model/chinese_L-12_H-768_A-12", wait_time=30)
 # Calculate similarity
 print(sim_calculator.bert_cos((9, 8)))
