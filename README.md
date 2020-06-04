@@ -1,5 +1,5 @@
 # bureaucracy_similarity
-Version control for similarity measures: [google spreadsheet](https://docs.google.com/spreadsheets/d/1okaSgrF8otUqJFWOtA0KGQf6xKsMt3GUVxFO8Ff8Ht4/edit#gid=0). This file documents all the versions we have for similairity measures and summarizes differences in training process and construction. Results are saved in [this dropbox folder](https://www.dropbox.com/sh/10nq9oazz6trrso/AADNXkVhJ5OE1s15G3ZSR1aua?dl=0).
+Version control for similarity measures: [google spreadsheet](https://docs.google.com/spreadsheets/d/1okaSgrF8otUqJFWOtA0KGQf6xKsMt3GUVxFO8Ff8Ht4/edit#gid=0). This file documents all the versions we have for similairity measures and summarizes differences in training process and construction. Results are saved in [this dropbox folder](https://www.dropbox.com/sh/10nq9oazz6trrso/AADNXkVhJ5OE1s15G3ZSR1aua?dl=0). 
 
 The code file `similarity.py` contrains functions for calculating several similarity measures. 
 You may download this in your working directory and import it in the follwoing way:
