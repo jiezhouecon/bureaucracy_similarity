@@ -112,3 +112,25 @@ sim_calculator.hdp((9, 8))
 This will return the HDP similarity score for paper 9 and paper 8.
 The code that loops over all the universities is `loop/loop_hdp_v3.py`.
 
+# 6. TF-IDF
+## Preparation
+Steps:
+1. Model for TF-IDF can be downloaded from [this link](https://www.dropbox.com/sh/oxxxparv65dsumx/AACZ2LZAdzfWXr31OSxPYcl5a?dl=0). 
+
+Model in this dropbox folder is trained with the code in `train\tfidf.py`.
+
+2. Load the model and get tokenized texts. All these can be done with the follwoing code:
+```
+sim_calculator.prep_tfidf('tfidf/tfidf.dict', 'tfidf/tfidf')
+# Please change the path to the dictionary and model correspondingly
+```
+
+## Calculate the similarity
+The similiarity score will be calculated at the pair level. The input should be a tupe of two indices. For example:
+```
+sim_calculator.tfidf((9, 8))
+```
+This will return the HDP similarity score for paper 9 and paper 8.
+The code that loops over all the universities is `loop/loop_tfidf.py`.
+
+
