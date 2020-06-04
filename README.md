@@ -11,7 +11,7 @@ from similarity import calculator
 The code is written as a class which uses a dataframe as its object. The dataframe will be a table in which each observation is a paper. You can initialize the similarity calculator for the whole dataframe using the following code:
 ```
 # Initialize the similarity calculator
-sim_calculator = similarity(df)
+sim_calculator = calculator(df1, df2, abs=False, token=False)
 ```
 
 # 2. BERT + Cosine
@@ -132,5 +132,25 @@ sim_calculator.tfidf((9, 8))
 ```
 This will return the HDP similarity score for paper 9 and paper 8.
 The code that loops over all the universities is `loop/loop_tfidf.py`.
+
+# 7. DTM
+## Preparation
+Steps:
+1. Model for TF-IDF can be downloaded from [this link](https://www.dropbox.com/sh/kkcwm9j8chup3ei/AABbySP9IdVDQRZg09ko5IHsa?dl=0). 
+
+Model in this dropbox folder is trained with the code in `train\dtm_train.py`. Prior to using this you need to compile [the DTM code](https://github.com/magsilva/dtm) yourself or use one of the binaries. 
+
+2. Load the model and get tokenized texts. All these can be done with the follwoing code:
+```
+sim_calculator.prep_dtm(dic_dir='dim/model', model_dir='dim/corpus.csv')
+# Please change the path to the dictionary and model correspondingly
+```
+
+## Calculate the similarity
+The similiarity score will be calculated at the pair level. The input should be a tupe of two indices and a tupe of codes for the two universities. For example:
+```
+sim_calculator.dtm_cos((i1, i2), (code1, code2))
+```
+The code that loops over all the universities is `loop/dtm-similarity.py`.
 
 
