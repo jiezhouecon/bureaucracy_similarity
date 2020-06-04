@@ -1,5 +1,8 @@
 # bureaucracy_similarity
-The code file `similarity.py` contrains functions for calculating several similarity measures. You may download this in your working directory and import it in the follwoing way:
+Version control for similarity measures: [google spreadsheet](https://docs.google.com/spreadsheets/d/1okaSgrF8otUqJFWOtA0KGQf6xKsMt3GUVxFO8Ff8Ht4/edit#gid=0).
+
+The code file `similarity.py` contrains functions for calculating several similarity measures. 
+You may download this in your working directory and import it in the follwoing way:
 ```
 from similarity import calculator
 ```
@@ -62,5 +65,24 @@ sim_calculator.doc2vec((9, 8))
 ```
 This will return the Doc2Vec similarity score for paper 9 and paper 8.
 
-# 4. LSI
-To be further updated.
+## 
+
+# 4. LDA
+## Preparation
+Steps:
+1. Model for LDA can be downloaded from [this link](https://www.dropbox.com/sh/f6v8fnw2j1xr3rx/AAA_Gl49gtDSdkkO_csRqiw6a?dl=0). 
+
+There are two type of models: `vi` and `gibb`. Models in the dropbox folder `lda/vi` is trained by `train/lda.py`. And those in the dropbox folder `lda/gibb` is trained by `train/lda_gibb.py`.
+
+2. Load the model and get tokenized texts. All these can be done with the follwoing code:
+```
+sim_calculator.prep_lda('ldaModel/vi/dict_t100.dict', 'ldaModel/vi/lda_t100')
+# Please change the path to the dictionary and model correspondingly
+```
+
+## Calculate the similarity
+The similiarity score will be calculated at the pair level. The input should be a tupe of two indices. For example:
+```
+sim_calculator.lda((9, 8))
+```
+This will return the LDA similarity score for paper 9 and paper 8.
