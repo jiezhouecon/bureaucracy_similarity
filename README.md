@@ -46,6 +46,7 @@ sim_calculator.prep_bert("model/chinese_L-12_H-768_A-12", wait_time = 60)
 # Calculate similarity
 print(sim_calculator.bert_cos((9, 8)))
 ```
+The code that loops over all the universities is `loop/loop_bert.py`.
 
 # 3. Doc2Vec
 ## Preparation
@@ -64,6 +65,7 @@ The similiarity score will be calculated at the pair level. The input should be 
 sim_calculator.doc2vec((9, 8))
 ```
 This will return the Doc2Vec similarity score for paper 9 and paper 8.
+The code that loops over all the universities is `loop/loop_doc2vec_v2.py`.
 
 ## 
 
@@ -86,6 +88,8 @@ The similiarity score will be calculated at the pair level. The input should be 
 sim_calculator.lda((9, 8))
 ```
 This will return the LDA similarity score for paper 9 and paper 8.
+The code that loops over all the universities is `loop/loop_lda_v3.py`.
+
 
 # 5. HDP
 ## Preparation
@@ -103,7 +107,8 @@ sim_calculator.prep_hdp('ldaModel/dict_hdp.dict', 'ldaModel/hdp')
 ## Calculate the similarity
 The similiarity score will be calculated at the pair level. The input should be a tupe of two indices. For example:
 ```
-sim_calculator.lda((9, 8))
+sim_calculator.hdp((9, 8))
 ```
 This will return the HDP similarity score for paper 9 and paper 8.
+The code that loops over all the universities is `loop/loop_hdp_v3.py`.
 
