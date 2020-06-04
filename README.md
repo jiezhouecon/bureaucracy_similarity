@@ -50,7 +50,7 @@ print(sim_calculator.bert_cos((9, 8)))
 # 3. Doc2Vec
 ## Preparation
 Steps:
-1. Please download the most updated Doc2Vec model through [this link](https://www.dropbox.com/s/b4sjx117ew6291z/d2v.model?dl=0)
+1. Please download the most updated Doc2Vec model through [this link](https://www.dropbox.com/s/b4sjx117ew6291z/d2v.model?dl=0). The model is trained by the code `train/doc2vec_finetune.py`. The pretrained model used in the training is `zhwiki_20180420_100d.txt` in the dropbox folder.
 2. Install the required package for Doc2Vec: `gensim 3.8.1`. (I guess you already have this installed. So I don't force this in the code. You need to manually install it if you don't have.)
 3. Load the model and get tokenized texts. All these can be done with the follwoing code:
 ```
@@ -87,7 +87,7 @@ sim_calculator.lda((9, 8))
 ```
 This will return the LDA similarity score for paper 9 and paper 8.
 
-# 4. HDP
+# 5. HDP
 ## Preparation
 Steps:
 1. Model for HDP can be downloaded from [this link](https://www.dropbox.com/sh/oxxxparv65dsumx/AACZ2LZAdzfWXr31OSxPYcl5a?dl=0). 
