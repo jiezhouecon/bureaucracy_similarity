@@ -1,5 +1,5 @@
 # bureaucracy_similarity
-Version control for similarity measures: [google spreadsheet](https://docs.google.com/spreadsheets/d/1okaSgrF8otUqJFWOtA0KGQf6xKsMt3GUVxFO8Ff8Ht4/edit#gid=0).
+Version control for similarity measures: [google spreadsheet](https://docs.google.com/spreadsheets/d/1okaSgrF8otUqJFWOtA0KGQf6xKsMt3GUVxFO8Ff8Ht4/edit#gid=0). This file documents all the versions we have for similairity measures and summarizes differences in training process and construction. Results are saved in [this dropbox folder](https://www.dropbox.com/sh/10nq9oazz6trrso/AADNXkVhJ5OE1s15G3ZSR1aua?dl=0).
 
 The code file `similarity.py` contrains functions for calculating several similarity measures. 
 You may download this in your working directory and import it in the follwoing way:
@@ -86,3 +86,24 @@ The similiarity score will be calculated at the pair level. The input should be 
 sim_calculator.lda((9, 8))
 ```
 This will return the LDA similarity score for paper 9 and paper 8.
+
+# 4. HDP
+## Preparation
+Steps:
+1. Model for HDP can be downloaded from [this link](https://www.dropbox.com/sh/oxxxparv65dsumx/AACZ2LZAdzfWXr31OSxPYcl5a?dl=0). 
+
+Model in this dropbox folder is trained with the code in `train\hdp.py`.
+
+2. Load the model and get tokenized texts. All these can be done with the follwoing code:
+```
+sim_calculator.prep_hdp('ldaModel/dict_hdp.dict', 'ldaModel/hdp')
+# Please change the path to the dictionary and model correspondingly
+```
+
+## Calculate the similarity
+The similiarity score will be calculated at the pair level. The input should be a tupe of two indices. For example:
+```
+sim_calculator.lda((9, 8))
+```
+This will return the HDP similarity score for paper 9 and paper 8.
+
