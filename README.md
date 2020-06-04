@@ -14,7 +14,7 @@ The code is written as a class which uses a dataframe as its object. The datafra
 sim_calculator = calculator(df1, df2, abs=False, token=False)
 ```
 
-# 2. BERT + Cosine
+# 2. BERT
 ## Preparation
 Steps:
 1. Please download the model used for Chinese BERT through [this link](https://www.dropbox.com/sh/ruz967qrqujgzr4/AADOXeDvMKVpmqbNaN1HkmmQa?dl=0)
